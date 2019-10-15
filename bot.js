@@ -5,7 +5,7 @@
 // This is the main file for the FBbot bot.
 
 // Import Botkit's core features
-/*const { Botkit } = require('botkit');
+const { Botkit } = require('botkit');
 const { BotkitCMSHelper } = require('botkit-plugin-cms');
 
 // Import a platform-specific adapter for facebook.
@@ -28,7 +28,7 @@ if (process.env.MONGO_URI) {
 const adapter = new FacebookAdapter({
 
     // REMOVE THIS OPTION AFTER YOU HAVE CONFIGURED YOUR APP!
-    enable_incomplete: true,
+    //enable_incomplete: true,
 
     verify_token: process.env.FACEBOOK_VERIFY_TOKEN,
     access_token: process.env.FACEBOOK_ACCESS_TOKEN,
@@ -61,7 +61,7 @@ controller.ready(() => {
     controller.loadModules(__dirname + '/features');
 
     /* catch-all that uses the CMS to trigger dialogs */
-   /* if (controller.plugins.cms) {
+    if (controller.plugins.cms) {
         controller.on('message,direct_message', async (bot, message) => {
             let results = false;
             results = await controller.plugins.cms.testTrigger(bot, message);
@@ -73,49 +73,8 @@ controller.ready(() => {
         });
     }
 
-});*/
-const Botkit = require('botkit');
-const controller = Botkit.facebookbot({
-        access_token: process.env.FACEBOOK_ACCESS_TOKEN,
-        verify_token: process.env.FACEBOOK_VERIFY_TOKEN,
-})
-
-var bot = controller.spawn({
 });
 
-// if you are already using Express, you can use your own server instance...
-// see "Use BotKit with an Express web server"
-controller.setupWebserver(process.env.port,function(err,webserver) {
-  controller.createWebhookEndpoints(controller.webserver, bot, function() {
-      console.log('This bot is online!!!');
-  });
-});
-
-// this is triggered when a user clicks the send-to-messenger plugin
-controller.on('facebook_optin', function(bot, message) {
-
-    bot.reply(message, 'Welcome to my app!');
-
-});
-
-// user said hello
-controller.hears(['hello'], 'message_received', function(bot, message) {
-
-    bot.reply(message, 'Hey there.');
-
-});
-
-controller.hears(['cookies'], 'message_received', function(bot, message) {
-
-    bot.startConversation(message, function(err, convo) {
-
-        convo.say('Did someone say cookies!?!!');
-        convo.ask('What is your favorite type of cookie?', function(response, convo) {
-            convo.say('Golly, I love ' + response.text + ' too!!!');
-            convo.next();
-        });
-    });
-});
 
 
 controller.webserver.get('/', (req, res) => {
