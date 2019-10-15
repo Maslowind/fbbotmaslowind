@@ -74,7 +74,11 @@ controller.ready(() => {
     }
 
 });
+controller.hears('hello','message_received,facebook_postback', function(bot,message) {
 
+    bot.reply(message, 'Got it!');
+  
+  });
 
 
 controller.webserver.get('/', (req, res) => {
