@@ -5,7 +5,7 @@
 // This is the main file for the FBbotMind bot.
 
 // Import Botkit's core features
-/*const { Botkit } = require('botkit');
+const { Botkit } = require('botkit');
 const { BotkitCMSHelper } = require('botkit-plugin-cms');
 
 // Import a platform-specific adapter for facebook.
@@ -53,7 +53,12 @@ if (process.env.cms_uri) {
         token: process.env.cms_token,
     }));
 }
+controller.hears(['hi','hello','howdy','hey','aloha','hola','bonjour','oi'],['message'], async (bot,message) => {
 
+    // do something to respond to message
+    await bot.reply(message,'Oh hai!');
+  
+  });
 // Once the bot has booted up its internal services, you can use them to do stuff.
 controller.ready(() => {
 
@@ -61,17 +66,12 @@ controller.ready(() => {
     controller.loadModules(__dirname + '/features');
 
     /* catch-all that uses the CMS to trigger dialogs */
-   /* if (controller.plugins.cms) {
+    if (controller.plugins.cms) {
        
         controller.on('message,direct_message', async (bot, message) => {
             let results = false;
             results = await controller.plugins.cms.testTrigger(bot, message);
-controller.hears(['hi','hello','howdy','hey','aloha','hola','bonjour','oi'],['message'], async (bot,message) => {
 
-    // do something to respond to message
-    await bot.reply(message,'Oh hai!');
-  
-  });
             if (results !== false) {
                 // do not continue middleware!
                 return false;
@@ -79,49 +79,8 @@ controller.hears(['hi','hello','howdy','hey','aloha','hola','bonjour','oi'],['me
         });
     }
 
-});*/
-var Botkit = require('botkit');
-var controller = Botkit.facebookbot({
-        access_token: process.env.FACEBOOK_ACCESS_TOKEN,
-        verify_token: process.env.FACEBOOK_VERIFY_TOKEN,
-})
-
-var bot = controller.spawn({
 });
 
-// if you are already using Express, you can use your own server instance...
-// see "Use BotKit with an Express web server"
-controller.setupWebserver(process.env.port,function(err,webserver) {
-  controller.createWebhookEndpoints(controller.webserver, bot, function() {
-      console.log('This bot is online!!!');
-  });
-});
-
-// this is triggered when a user clicks the send-to-messenger plugin
-controller.on('facebook_optin', function(bot, message) {
-
-    bot.reply(message, 'Welcome to my app!');
-
-});
-
-// user said hello
-controller.hears(['hello'], 'message_received', function(bot, message) {
-
-    bot.reply(message, 'Hey there.');
-
-});
-
-controller.hears(['cookies'], 'message_received', function(bot, message) {
-
-    bot.startConversation(message, function(err, convo) {
-
-        convo.say('Did someone say cookies!?!!');
-        convo.ask('What is your favorite type of cookie?', function(response, convo) {
-            convo.say('Golly, I love ' + response.text + ' too!!!');
-            convo.next();
-        });
-    });
-});
 
 
 
