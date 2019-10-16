@@ -59,11 +59,9 @@ controller.ready(() => {
 
     // load traditional developer-created local custom feature modules
     controller.loadModules(__dirname + '/features');
-    controller.hears('hello','message_received,facebook_postback', function(bot,message) {
-
-        bot.reply(message, 'Got it!');
-      
-      });
+    controller.on('channel_join', async(bot, message) => {
+        await bot.reply(message,'Welcome to the channel!');
+    });
     /* catch-all that uses the CMS to trigger dialogs */
     if (controller.plugins.cms) {
         controller.on('message,direct_message', async (bot, message) => {
