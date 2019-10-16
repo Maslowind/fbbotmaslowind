@@ -28,7 +28,7 @@ if (process.env.MONGO_URI) {
 const adapter = new FacebookAdapter({
 
     // REMOVE THIS OPTION AFTER YOU HAVE CONFIGURED YOUR APP!
-    //enable_incomplete: true,
+    enable_incomplete: true,
 
     verify_token: process.env.FACEBOOK_VERIFY_TOKEN,
     access_token: process.env.FACEBOOK_ACCESS_TOKEN,
@@ -40,7 +40,7 @@ adapter.use(new FacebookEventTypeMiddleware());
 
 
 const controller = new Botkit({
-    webhook_uri: '/api/messages',
+    webhook_uri: 'https://webhookfbbotmaslowind.herokuapp.com/webhook',
 
     adapter: adapter,
 
