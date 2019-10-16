@@ -53,18 +53,18 @@ if (process.env.cms_uri) {
         token: process.env.cms_token,
     }));
 }
+controller.hears(['hi','hello','howdy','hey','aloha','hola','bonjour','oi'],['message'], async (bot,message) => {
 
+    // do something to respond to message
+    await bot.reply(message,'Oh hai!');
+  
+  });
 // Once the bot has booted up its internal services, you can use them to do stuff.
 controller.ready(() => {
 
     // load traditional developer-created local custom feature modules
     controller.loadModules(__dirname + '/features');
- controller.hears(['hi','hello','howdy','hey','aloha','hola','bonjour','oi'],['message'], async (bot,message) => {
 
-            // do something to respond to message
-            await bot.reply(message,'Oh hai!');
-          
-          });
     /* catch-all that uses the CMS to trigger dialogs */
     if (controller.plugins.cms) {
        
