@@ -59,11 +59,12 @@ controller.ready(() => {
 
     // load traditional developer-created local custom feature modules
     controller.loadModules(__dirname + '/features');
-    controller.on('channel_join', async(bot, message) => {
-        await bot.reply(message,'Welcome to the channel!');
-    });
+
     /* catch-all that uses the CMS to trigger dialogs */
     if (controller.plugins.cms) {
+        controller.on('channel_join', async(bot, message) => {
+            await bot.reply(message,'Welcome to the channel!');
+        });
         controller.on('message,direct_message', async (bot, message) => {
             let results = false;
             results = await controller.plugins.cms.testTrigger(bot, message);
