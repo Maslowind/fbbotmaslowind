@@ -62,9 +62,12 @@ controller.ready(() => {
 
     /* catch-all that uses the CMS to trigger dialogs */
     if (controller.plugins.cms) {
-        controller.on('channel_join', async(bot, message) => {
-            await bot.reply(message,'Welcome to the channel!');
-        });
+        controller.hears(['hi','hello','howdy','hey','aloha','hola','bonjour','oi'],['message'], async (bot,message) => {
+
+            // do something to respond to message
+            await bot.reply(message,'Oh hai!');
+          
+          });
         controller.on('message,direct_message', async (bot, message) => {
             let results = false;
             results = await controller.plugins.cms.testTrigger(bot, message);
