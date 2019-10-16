@@ -2,7 +2,7 @@
 // |__) /  \  |  |__/ |  |  
 // |__) \__/  |  |  \ |  |  
 
-// This is the main file for the FBbot bot.
+// This is the main file for the FBbotMind bot.
 
 // Import Botkit's core features
 const { Botkit } = require('botkit');
@@ -28,7 +28,7 @@ if (process.env.MONGO_URI) {
 const adapter = new FacebookAdapter({
 
     // REMOVE THIS OPTION AFTER YOU HAVE CONFIGURED YOUR APP!
-    //enable_incomplete: true,
+    enable_incomplete: true,
 
     verify_token: process.env.FACEBOOK_VERIFY_TOKEN,
     access_token: process.env.FACEBOOK_ACCESS_TOKEN,
@@ -74,11 +74,7 @@ controller.ready(() => {
     }
 
 });
-controller.hears('hello','message_received,facebook_postback', function(bot,message) {
 
-    bot.reply(message, 'Got it!');
-  
-  });
 
 
 controller.webserver.get('/', (req, res) => {
@@ -86,11 +82,7 @@ controller.webserver.get('/', (req, res) => {
     res.send(`This app is running Botkit ${ controller.version }.`);
 
 });
-controller.webserver.get('/konf', (req, res) => {
 
-    res.send(`It's ok.`);
-
-});
 
 
 
