@@ -59,7 +59,11 @@ controller.ready(() => {
 
     // load traditional developer-created local custom feature modules
     controller.loadModules(__dirname + '/features');
+    controller.hears('hello','message_received,facebook_postback', function(bot,message) {
 
+        bot.reply(message, 'Got it!');
+      
+      });
     /* catch-all that uses the CMS to trigger dialogs */
     if (controller.plugins.cms) {
         controller.on('message,direct_message', async (bot, message) => {
@@ -76,18 +80,10 @@ controller.ready(() => {
 });
 
 
-controller.hears('hello','message_received,facebook_postback', function(bot,message) {
-
-    bot.reply(message, 'Got it!');
-  
-  });
 
 
-controller.webserver.get('/', (req, res) => {
 
-    res.send(`This app is running Botkit ${ controller.version }.`);
 
-});
 controller.webserver.get('/', (req, res) => {
 
     res.send(`This app is running Botkit ${ controller.version }.`);
