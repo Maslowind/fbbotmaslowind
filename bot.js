@@ -5,7 +5,6 @@
 // This is the main file for the FBbotMind bot.
 
 // Import Botkit's core features
-import { webhook } from './webhook';
 const { Botkit } = require('botkit');
 const { BotkitCMSHelper } = require('botkit-plugin-cms');
 
@@ -40,7 +39,6 @@ const adapter = new FacebookAdapter({
 // emit events based on the type of facebook event being received
 adapter.use(new FacebookEventTypeMiddleware());
 
-webhook();
 const controller = new Botkit({
     webhook_url: 'https://webhookfbbotmaslowind.herokuapp.com/webhook',
 
