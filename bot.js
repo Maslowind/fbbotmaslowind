@@ -40,7 +40,7 @@ const adapter = new FacebookAdapter({
 adapter.use(new FacebookEventTypeMiddleware());
 
 const controller = new Botkit({
-    webhook_url: 'https://webhookfbbotmaslowind.herokuapp.com/webhook',
+    webhook_uri: 'https://webhookfbbotmaslowind.herokuapp.com/webhook',
 
     adapter: adapter,
 
