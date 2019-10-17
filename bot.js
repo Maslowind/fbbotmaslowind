@@ -14,12 +14,12 @@ const { FacebookAdapter, FacebookEventTypeMiddleware } = require('botbuilder-ada
 
 const { MongoDbStorage } = require('botbuilder-storage-mongodb');
 
-
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express().use(bodyParser.json()); // creates express http server
 // Load process.env values from .env file
-require('dotenv').config();
+
 app.post('/webhook', (req, res) => {  
     let body = req.body;
     if (body.object === 'page') {
