@@ -13,10 +13,13 @@ const { BotkitCMSHelper } = require('botkit-plugin-cms');
 const { FacebookAdapter, FacebookEventTypeMiddleware } = require('botbuilder-adapter-facebook');
 
 const { MongoDbStorage } = require('botbuilder-storage-mongodb');
+
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express().use(bodyParser.json()); // creates express http server
-
+// Load process.env values from .env file
+require('dotenv').config();
 app.post('/webhook', (req, res) => {  
     let body = req.body;
     if (body.object === 'page') {
@@ -46,8 +49,7 @@ app.post('/webhook', (req, res) => {
     }
   });
  
-// Load process.env values from .env file
-require('dotenv').config();
+
 
 let storage = null;
 if (process.env.MONGO_URI) {
@@ -128,7 +130,7 @@ controller.webserver.get('/', (req, res) => {
 
     res.send(`This app is running Botkit ${ controller.version }.`);
  });
- app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
+
 
 
 
