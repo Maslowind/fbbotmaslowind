@@ -20,6 +20,32 @@ const bodyParser = require('body-parser');
 const app = express().use(bodyParser.json()); // creates express http server
 
 
+
+  
+
+
+let storage = null;
+if (process.env.MONGO_URI) {
+    storage = mongoStorage = new MongoDbStorage({
+        url : process.env.MONGO_URI,
+    });
+}
+
+
+const adapter = new FacebookAdapter({
+
+    // REMOVE THIS OPTION AFTER YOU HAVE CONFIGURED YOUR APP!
+    enable_incomplete: true,
+
+    verify_token: process.env.FACEBOOK_VERIFY_TOKEN,
+    access_token: process.env.FACEBOOK_ACCESS_TOKEN,
+    app_secret: process.env.FACEBOOK_APP_SECRET,
+   
+})
+
+// emit events based on the type of facebook event being received
+adapter.use(new FacebookEventTypeMiddleware());
+
 app.post('/webhook', (req, res) => {  
     let body = req.body;
     if (body.object === 'page') {
@@ -48,32 +74,6 @@ app.post('/webhook', (req, res) => {
       }
     }
   });
-  
-
-
-let storage = null;
-if (process.env.MONGO_URI) {
-    storage = mongoStorage = new MongoDbStorage({
-        url : process.env.MONGO_URI,
-    });
-}
-
-
-const adapter = new FacebookAdapter({
-
-    // REMOVE THIS OPTION AFTER YOU HAVE CONFIGURED YOUR APP!
-    enable_incomplete: true,
-
-    verify_token: process.env.FACEBOOK_VERIFY_TOKEN,
-    access_token: process.env.FACEBOOK_ACCESS_TOKEN,
-    app_secret: process.env.FACEBOOK_APP_SECRET,
-   
-})
-
-// emit events based on the type of facebook event being received
-adapter.use(new FacebookEventTypeMiddleware());
-
-
 const controller = new Botkit({
     webhook_uri: '/webhook',
 
