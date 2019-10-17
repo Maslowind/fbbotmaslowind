@@ -93,7 +93,7 @@ controller.ready(() => {
 
 controller.webserver.get('/', (req, res) => {
 
-    res.send(`This app is running Botkit ${ controller.version }.`);
+    //res.send(`This app is running Botkit ${ controller.version }.`);
     res.send("Token:"+FACEBOOK_ACCESS_TOKEN);
 });
 
