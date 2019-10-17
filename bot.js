@@ -45,7 +45,7 @@ app.post('/webhook', (req, res) => {
       }
     }
   });
-  app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
+ 
 // Load process.env values from .env file
 require('dotenv').config();
 
@@ -128,7 +128,7 @@ controller.webserver.get('/', (req, res) => {
 
     res.send(`This app is running Botkit ${ controller.version }.`);
  });
-
+ app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
 
 
 
