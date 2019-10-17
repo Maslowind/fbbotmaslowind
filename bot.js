@@ -28,11 +28,12 @@ if (process.env.MONGO_URI) {
 const adapter = new FacebookAdapter({
 
     // REMOVE THIS OPTION AFTER YOU HAVE CONFIGURED YOUR APP!
-    enable_incomplete: true,
+    //enable_incomplete: true,
 
     verify_token: process.env.FACEBOOK_VERIFY_TOKEN,
     access_token: process.env.FACEBOOK_ACCESS_TOKEN,
     app_secret: process.env.FACEBOOK_APP_SECRET,
+   
 })
 
 // emit events based on the type of facebook event being received
@@ -93,9 +94,8 @@ controller.ready(() => {
 
 controller.webserver.get('/', (req, res) => {
 
-    //res.send(`This app is running Botkit ${ controller.version }.`);
-    res.send("Token:"+process.env.FACEBOOK_ACCESS_TOKEN);
-});
+    res.send(`This app is running Botkit ${ controller.version }.`);
+ });
 
 
 
