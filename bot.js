@@ -13,12 +13,12 @@ const { BotkitCMSHelper } = require('botkit-plugin-cms');
 const { FacebookAdapter, FacebookEventTypeMiddleware } = require('botbuilder-adapter-facebook');
 
 const { MongoDbStorage } = require('botbuilder-storage-mongodb');
-
+// Load process.env values from .env file
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express().use(bodyParser.json()); // creates express http server
-// Load process.env values from .env file
+
 
 app.post('/webhook', (req, res) => {  
     let body = req.body;
@@ -48,7 +48,7 @@ app.post('/webhook', (req, res) => {
       }
     }
   });
-  app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
+  
 
 
 let storage = null;
@@ -62,7 +62,7 @@ if (process.env.MONGO_URI) {
 const adapter = new FacebookAdapter({
 
     // REMOVE THIS OPTION AFTER YOU HAVE CONFIGURED YOUR APP!
-    enable_incomplete: true,
+    //enable_incomplete: true,
 
     verify_token: process.env.FACEBOOK_VERIFY_TOKEN,
     access_token: process.env.FACEBOOK_ACCESS_TOKEN,
