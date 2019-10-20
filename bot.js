@@ -24,7 +24,6 @@ if (process.env.MONGO_URI) {
     });
 }
 
-
 const adapter = new FacebookAdapter({
 
     // REMOVE THIS OPTION AFTER YOU HAVE CONFIGURED YOUR APP!
@@ -40,7 +39,7 @@ const adapter = new FacebookAdapter({
 adapter.use(new FacebookEventTypeMiddleware());
 
 const controller = new Botkit({
-    webhook_uri: 'https://webhookfbbotmaslowind.herokuapp.com/webhook',
+    webhook_uri: '/api/messages',
 
     adapter: adapter,
 
@@ -85,10 +84,6 @@ controller.ready(() => {
     }
 
 });
-
-
-
-
 
 
 controller.webserver.get('/', (req, res) => {
