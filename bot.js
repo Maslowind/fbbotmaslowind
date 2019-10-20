@@ -51,7 +51,9 @@ if (process.env.cms_uri) {
         token: process.env.cms_token,
     }));
 }
-
+controller.hears('hi','direct_message', function(bot, message) {
+    bot.reply(message,'Hello yourself!');
+});
 // Once the bot has booted up its internal services, you can use them to do stuff.
 controller.ready(() => {
     controller.on('facebook_optin', function(bot, message) {
