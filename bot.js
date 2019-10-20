@@ -15,12 +15,12 @@ const { MongoDbStorage } = require('botbuilder-storage-mongodb');
 // Load process.env values from .env file
 require('dotenv').config();
 
-/*let storage = null;
+let storage = null;
 if (process.env.MONGO_URI) {
     storage = mongoStorage = new MongoDbStorage({
         url : process.env.MONGO_URI,
     });
-}*/
+}
 
 const adapter = new FacebookAdapter({
 
