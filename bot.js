@@ -7,9 +7,7 @@
 // Import Botkit's core features
 const { Botkit } = require('botkit');
 const { BotkitCMSHelper } = require('botkit-plugin-cms');
-
 // Import a platform-specific adapter for facebook.
-
 const { FacebookAdapter, FacebookEventTypeMiddleware } = require('botbuilder-adapter-facebook');
 
 const { MongoDbStorage } = require('botbuilder-storage-mongodb');
@@ -17,17 +15,17 @@ const { MongoDbStorage } = require('botbuilder-storage-mongodb');
 // Load process.env values from .env file
 require('dotenv').config();
 
-let storage = null;
+/*let storage = null;
 if (process.env.MONGO_URI) {
     storage = mongoStorage = new MongoDbStorage({
         url : process.env.MONGO_URI,
     });
-}
+}*/
 
 const adapter = new FacebookAdapter({
 
     // REMOVE THIS OPTION AFTER YOU HAVE CONFIGURED YOUR APP!
-    enable_incomplete: true,
+   // enable_incomplete: true,
 
     verify_token: process.env.FACEBOOK_VERIFY_TOKEN,
     access_token: process.env.FACEBOOK_ACCESS_TOKEN,
@@ -45,20 +43,8 @@ const controller = new Botkit({
 
     storage
 });
-var bot = controller.spawn({
-    incoming_webhook: {
-      url: 'https://webhookfbbotmaslowind.herokuapp.com/webhook'
-    }
-  })
-  
-  bot.sendWebhook({
-    text: 'This is an incoming webhook',
-    channel: '#general',
-  },function(err,res) {
-    if (err) {
-      console.log("This is fluping error")
-    }
-  });
+
+
 if (process.env.cms_uri) {
     controller.usePlugin(new BotkitCMSHelper({
         uri: process.env.cms_uri,
