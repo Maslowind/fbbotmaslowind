@@ -27,7 +27,7 @@ if (process.env.MONGO_URI) {
 const adapter = new FacebookAdapter({
 
     // REMOVE THIS OPTION AFTER YOU HAVE CONFIGURED YOUR APP!
-    //enable_incomplete: true,
+    enable_incomplete: true,
 
     verify_token: process.env.FACEBOOK_VERIFY_TOKEN,
     access_token: process.env.FACEBOOK_ACCESS_TOKEN,
@@ -45,7 +45,20 @@ const controller = new Botkit({
 
     storage
 });
-
+var bot = controller.spawn({
+    incoming_webhook: {
+      url: 'https://webhookfbbotmaslowind.herokuapp.com/webhook'
+    }
+  })
+  
+  bot.sendWebhook({
+    text: 'This is an incoming webhook',
+    channel: '#general',
+  },function(err,res) {
+    if (err) {
+      console.log("This is fluping error")
+    }
+  });
 if (process.env.cms_uri) {
     controller.usePlugin(new BotkitCMSHelper({
         uri: process.env.cms_uri,
