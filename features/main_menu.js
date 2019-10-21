@@ -7,17 +7,8 @@ module.exports = function(controller) {
             quick_replies: [
                 {
                     title: "Main",
-                    payload: "main-menu",
-                    call_to_actions:[
-                        {
-                            title:"Hello",
-                            payload:"Hello"
-                        },
-                        {
-                            title:"Hi",
-                            payload:"Hi"
-                        }
-                    ]
+                    payload: "main-menu"
+                    
                 },
                 {
                     title: "Help",
