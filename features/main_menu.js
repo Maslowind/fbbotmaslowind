@@ -27,7 +27,7 @@ module.exports = function(controller) {
     });
     controller.on('facebook_postback', function(bot, message) {
 
-        if (message.payload == 'Main menu') {
+        if (message.payload == 'main-menu') {
          bot.reply(message, {
             text: 'Here is a menu!',
             quick_replies: [
