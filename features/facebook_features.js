@@ -12,9 +12,33 @@ module.exports = function(controller) {
         await bot.reply(message,'Cool sticker.');
     });
 
-   /* controller.on('facebook_postback', async(bot, message) => {
-        await bot.reply(message,` ${ message.text }`);
-    });*/
+    controller.on('facebook_postback', async(bot, message) => {
+        if (message.payload == 'main-menu') {
+        await bot.reply(message, {
+            text: 'Here is a menu!',
+            quick_replies: [
+                {
+                    title: "My purchases",
+                    payload: "my-purchases"
+                    
+                },
+                {
+                    title: "Shop",
+                    payload: "shop"
+                },
+                {
+                    title: "Favorites",
+                    payload: "favorites"
+                },
+                {
+                    title: "To invite a friend",
+                    payload: "to-invite-a-friend"
+                }
+            ]
+        });
+    });
+        }
+    });
 
 
 }
