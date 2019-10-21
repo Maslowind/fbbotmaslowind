@@ -8,6 +8,16 @@ module.exports = function(controller) {
                 {
                     title: "Main",
                     payload: "main-menu",
+                    call_to_actions:[
+                        {
+                            title:"Hello",
+                            payload:"Hello"
+                        },
+                        {
+                            title:"Hi",
+                            payload:"Hi"
+                        }
+                    ]
                 },
                 {
                     title: "Help",
