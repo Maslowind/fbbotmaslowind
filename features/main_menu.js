@@ -1,30 +1,37 @@
 module.exports = function(controller) {
-
+    let main_menu = [
+        {
+            title: "My purchases",
+            payload: "my-purchases"
+            
+        },
+        {
+            title: "Shop",
+            payload: "shop"
+        },
+        {
+            title: "Favorites",
+            payload: "favorites"
+        },
+        {
+            title: "To invite a friend",
+            payload: "to-invite-a-friend"
+        }
+    ];
     controller.hears('Main menu','message',  async(bot, message) => { 
 
         await bot.reply(message, {
             text: 'Here is a menu!',
-            quick_replies: [
-                {
-                    title: "My purchases",
-                    payload: "my-purchases"
-                    
-                },
-                {
-                    title: "Shop",
-                    payload: "shop"
-                },
-                {
-                    title: "Favorites",
-                    payload: "favorites"
-                },
-                {
-                    title: "To invite a friend",
-                    payload: "to-invite-a-friend"
-                }
-            ]
+            quick_replies: main_menu
         });
     });
-    
+    controller.on('facebook_postback', async(bot, message) => {
+        if (message.text == 'main-menu') {
+        await bot.reply(message, {
+            text: 'Here is a menu!',
+            quick_replies: main_menu
+        });
+        }
+    });
 
 }
