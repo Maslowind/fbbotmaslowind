@@ -30,9 +30,9 @@ const adapter = new FacebookAdapter({
     // REMOVE THIS OPTION AFTER YOU HAVE CONFIGURED YOUR APP!
     //enable_incomplete: true,
 
-    verify_token: "g616",//process.env.FACEBOOK_VERIFY_TOKEN,
-    access_token: "EAAeuHWSGguMBAJurcwMZB0RUm7VhKihRglWQ6wjqtZBH9i438ZAYZBSpDHttSFrLZASWeRGRhzo5AZCie2nfPSZBUGx8Iosag3mGXWApfpcHZAWG4hHv6dU9Qpn58bvOKae6c8ZBZAoUjUBqyEiT2CMFtGwsmcZCZBdlIzrMhsLIIeyqZAQSkSTKaBv62",//process.env.FACEBOOK_ACCESS_TOKEN,
-    app_secret:"a3881071ba4068652bde2dba49036af9" //process.env.FACEBOOK_APP_SECRET,
+    verify_token: process.env.FACEBOOK_VERIFY_TOKEN,
+    access_token: process.env.FACEBOOK_ACCESS_TOKEN,
+    app_secret:process.env.FACEBOOK_APP_SECRET,
 })
 
 // emit events based on the type of facebook event being received
