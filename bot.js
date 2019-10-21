@@ -61,10 +61,7 @@ controller.ready(() => {
         bot.reply(message, 'Welcome to my app!');
     
     });
-    controller.hears(['hi','hello','howdy','hey','aloha','hola','bonjour','oi'],['message'], async (bot,message) => {
-    // do something to respond to message
-        await bot.reply(message,'Oh hai!');
-    });
+    
     // load traditional developer-created local custom feature modules
     controller.loadModules(__dirname + '/features');
 
