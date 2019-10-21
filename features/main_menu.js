@@ -1,6 +1,6 @@
 module.exports = function(controller) {
 
-    controller.hears('Main menu',['message','postback',  async(bot, message) => { 
+    controller.hears('Main menu',['message','postback'],  async(bot, message) => { 
 
         await bot.reply(message, {
             text: 'Here is a menu!',
