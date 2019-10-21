@@ -12,9 +12,9 @@ module.exports = function(controller) {
         await bot.reply(message,'Cool sticker.');
     });
 
-    controller.on('facebook_postback', async(bot, message) => {
+   /* controller.on('facebook_postback', async(bot, message) => {
         await bot.reply(message,` ${ message.text }`);
-    });
+    });*/
 
 
 }
