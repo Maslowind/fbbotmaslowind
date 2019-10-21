@@ -1,6 +1,6 @@
 module.exports = function(controller) {
 
-    controller.on('menu','message', async(bot, message) => { 
+    controller.on('message', async(bot, message) => { 
 
         await bot.reply(message, {
             text: 'Here is a menu!',
