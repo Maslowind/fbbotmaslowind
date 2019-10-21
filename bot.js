@@ -51,16 +51,10 @@ if (process.env.cms_uri) {
         token: process.env.cms_token,
     }));
 }
-controller.hears('hi','direct_message', function(bot, message) {
-    bot.reply(message,'Hello yourself!');
-});
+
 // Once the bot has booted up its internal services, you can use them to do stuff.
 controller.ready(() => {
-    controller.on('facebook_optin', function(bot, message) {
 
-        bot.reply(message, 'Welcome to my app!');
-    
-    });
     controller.hears(['hi','hello','howdy','hey','aloha','hola','bonjour','oi'],['message'], async (bot,message) => {
 
         // do something to respond to message
@@ -72,8 +66,12 @@ controller.ready(() => {
 
     /* catch-all that uses the CMS to trigger dialogs */
     if (controller.plugins.cms) {
-       
-        controller.on('message,direct_message', async (bot, message) => {
+        controller.on('facebook_optin', function(bot, message) {
+
+            bot.reply(message, 'Welcome to my app!');
+        
+        });
+        /*controller.on('message,direct_message', async (bot, message) => {
             let results = false;
             results = await controller.plugins.cms.testTrigger(bot, message);
 
@@ -81,7 +79,7 @@ controller.ready(() => {
                 // do not continue middleware!
                 return false;
             }
-        });
+        });*/
     }
 
 });
