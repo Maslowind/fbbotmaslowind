@@ -1,22 +1,30 @@
 module.exports = function(controller) {
 
-    controller.hears('main_menu','message',  async(bot, message) => { 
+    controller.hears('main-menu','message',  async(bot, message) => { 
 
         await bot.reply(message, {
             text: 'Here is a menu!',
             quick_replies: [
                 {
-                    title: "Main",
-                    payload: "main-menu"
+                    title: "My purchases",
+                    payload: "my-purchases"
                     
                 },
                 {
-                    title: "Help",
-                    payload: "help"
+                    title: "Shop",
+                    payload: "shop"
+                },
+                {
+                    title: "Favorites",
+                    payload: "favorites"
+                },
+                {
+                    title: "To invite a friend",
+                    payload: "to-invite-a-friend"
                 }
             ]
         });
     });
-
+    
 
 }
