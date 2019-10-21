@@ -61,17 +61,20 @@ controller.ready(() => {
         await bot.reply(message,'Oh hai!');
     
     });
+    controller.on('channel_join', async(bot, message) => {
+        await bot.reply(message,'Welcome to the channel!');
+    });
+    controller.on('facebook_optin', function(bot, message) {
+
+        bot.reply(message, 'Welcome to my app!');
+    });
     // load traditional developer-created local custom feature modules
     controller.loadModules(__dirname + '/features');
 
     /* catch-all that uses the CMS to trigger dialogs */
     if (controller.plugins.cms) {
-        controller.on('facebook_optin', function(bot, message) {
-
-            bot.reply(message, 'Welcome to my app!');
         
-        });
-        /*controller.on('message,direct_message', async (bot, message) => {
+        controller.on('message,direct_message', async (bot, message) => {
             let results = false;
             results = await controller.plugins.cms.testTrigger(bot, message);
 
@@ -79,7 +82,7 @@ controller.ready(() => {
                 // do not continue middleware!
                 return false;
             }
-        });*/
+        });
     }
 
 });
