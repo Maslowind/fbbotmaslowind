@@ -1,7 +1,7 @@
 module.exports = function(controller) {
 function menu()
 {
-  return  await bot.reply(message, {
+  return   bot.reply(message, {
         text: 'Here is a menu!',
         quick_replies: [
             {
