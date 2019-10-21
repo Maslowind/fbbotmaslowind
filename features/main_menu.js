@@ -25,7 +25,7 @@ module.exports = function(controller) {
         });
 
     });
-    controller.on('facebook_postback', function(bot, message) {
+    /*controller.on('facebook_postback', function(bot, message) {
 
         if (message.payload == 'main-menu') {
          bot.reply(message, {
@@ -51,6 +51,6 @@ module.exports = function(controller) {
             ]
         });
     }
-    });
+    });*/
     
 }
