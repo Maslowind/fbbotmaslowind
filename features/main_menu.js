@@ -1,6 +1,6 @@
 module.exports = function(controller) {
 
-    controller.on('message', async(bot, message) => { 
+    controller.hears('main_menu','message',  async(bot, message) => { 
 
         await bot.reply(message, {
             text: 'Here is a menu!',
