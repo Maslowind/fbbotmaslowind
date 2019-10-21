@@ -68,9 +68,7 @@ controller.ready(() => {
 
         bot.reply(message, 'Welcome to my app!');
     });
-    controller.on('message', async(bot, message) => {
-        await bot.reply(message, 'I heard you say something!');
-    });
+    
     // load traditional developer-created local custom feature modules
     controller.loadModules(__dirname + '/features');
 
