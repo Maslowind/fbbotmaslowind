@@ -13,9 +13,10 @@ module.exports = function(controller) {
     });
 
     controller.on('facebook_postback', async(bot, message) => {
+        if (message.text == 'main-menu') {
         await bot.reply(message,` ${ message.text }`);
-        
+        }
     });
 
-
+    
 }
