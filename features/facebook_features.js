@@ -17,7 +17,7 @@ module.exports = function(controller) {
         await bot.reply(message,`I heard you posting back a post_back about ${ message.text }`);
     });*/
     controller.on('facebook_referral', async(bot, message) => {
-        await bot.reply(message,`I heard you joined us with ${ message.text }`);
+        await bot.reply(message,`I heard you joined us with ${ ref.text }`);
     });
 
     
