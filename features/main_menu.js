@@ -25,16 +25,16 @@ module.exports = function(controller) {
             quick_replies: main_menu
         });
     });
-    controller.on('facebook_postback', async(bot, message) => {
+   /* controller.on('facebook_postback', async(bot, message) => {
         if (message.text == 'main-menu'||message.text == '<postback_payload>') {
         await bot.reply(message, {
             text: 'Here is a menu!',
             quick_replies: main_menu
         });
         }
-    });
+    });*/
     controller.on('event', async(bot, message) => {
-        if (message.quick_reply.payload=='main-menu') {
+        if (message.quick_reply.payload=='main-menu'||message.text == 'main-menu'||message.text == '<postback_payload>') {
             await bot.reply(message, {
                 text: 'Here is a menu!',
                 quick_replies: main_menu
