@@ -26,7 +26,7 @@ module.exports = function(controller) {
         await bot.reply(message,`referral.type: ${ message.referral.type }`);
         await bot.reply(message,`referral.ref: ${ message.referral.ref }`);
         await bot.reply(message,`referral.referer_uri: ${ message.referral.referer_uri }`);
-        await bot.reply(message,`user.id: ${ users.info }`);
+        await bot.reply(message,`user.id: ${ message.user }`);
 
     });
 
