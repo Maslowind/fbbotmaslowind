@@ -16,7 +16,8 @@ module.exports = function(controller) {
     });
     controller.hears('Go back','message',  async(bot, message) => { 
 
-        await bot.reply(message,`message.attachments.payload: ${ message.attachments.payload }`);
+        await bot.reply(message,`Darov, lalka`);
+         await bot.reply(message,`message.attachments: ${ message.attachments }`);
     });
     controller.on('facebook_referral', async(bot, message) => {
         await bot.reply(message,`sender.id: ${ message.sender.id }`);
