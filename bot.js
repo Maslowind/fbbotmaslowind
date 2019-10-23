@@ -24,12 +24,7 @@ if (process.env.MONGO_URI) {
     });
 }
 
-
 const adapter = new FacebookAdapter({
-
-    // REMOVE THIS OPTION AFTER YOU HAVE CONFIGURED YOUR APP!
-    //enable_incomplete: true,
-
     verify_token: process.env.FACEBOOK_VERIFY_TOKEN,
     access_token: process.env.FACEBOOK_ACCESS_TOKEN,
     app_secret:process.env.FACEBOOK_APP_SECRET,
@@ -75,11 +70,6 @@ controller.ready(() => {
     }
 
 });
-
-
-
-
-
 
 controller.webserver.get('/', (req, res) => {
 
