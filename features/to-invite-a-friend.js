@@ -19,7 +19,7 @@ module.exports = function(controller) {
         await bot.reply(message,`Darov, lalka`);
          await bot.reply(message,`message.quick_reply.payload: ${ message.quick_reply.payload }`);
     });*/
-    controller.on('facebook_referral', async(bot, message) => {
+    controller.on('messaging_referrals', async(bot, message) => {
         await bot.reply(message,`sender.id: ${ message.sender.id }`);
         await bot.reply(message,`recipient.id: ${ message.recipient.id }`);
         await bot.reply(message,`referral.source: ${ message.referral.source }`);
