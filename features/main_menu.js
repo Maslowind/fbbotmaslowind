@@ -18,7 +18,7 @@ module.exports = function(controller) {
             payload: "to-invite-a-friend"
         }
     ];
-    controller.hears('Main menu'|| message.quick_reply.payload=='main-menu','message',  async(bot, message) => { 
+    controller.hears('Main menu','message',  async(bot, message) => { 
 
         await bot.reply(message, {
             text: 'Here is a menu!',
@@ -33,5 +33,12 @@ module.exports = function(controller) {
         });
         }
     });
+    controller.on('event', async(bot, message) => {
+        if (message.quick_reply.payload=='main-menu') {
+            await bot.reply(message, {
+                text: 'Here is a menu!',
+                quick_replies: main_menu
+            });
+            } });
 
 }
