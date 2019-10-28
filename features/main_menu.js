@@ -20,12 +20,12 @@ module.exports = function(controller) {
     ];
     
 
-    controller.hears(async(message) => { return (message.quick_reply.payload=='main-menu') }, 'message', async(bot, message) => { 
+    /*controller.hears(async(message) => { return (message.quick_reply.payload=='main-menu') }, 'message', async(bot, message) => { 
            await bot.reply(message, {
             text: 'Here is a menu!',
             quick_replies: main_menu
         });
-    });
+    });*/
 
 
 
