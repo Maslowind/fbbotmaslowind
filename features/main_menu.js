@@ -18,7 +18,7 @@ module.exports = function(controller) {
             payload: "to-invite-a-friend"
         }
     ];
-    controller.hears('Main menu','message',  async(bot, message) => { 
+    controller.hears('main-menu','facebook_quick_reply',  async(bot, message) => { 
         await bot.reply(message,`I heard you posting back a post_back about ${ message.quick_reply.payload}`);
         await bot.reply(message, {
             text: 'Here is a menu!',
