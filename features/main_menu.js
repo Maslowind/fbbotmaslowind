@@ -19,7 +19,7 @@ module.exports = function(controller) {
         }
     ];
     controller.hears('Main menu','message',  async(bot, message) => { 
-        await bot.reply(message,`I heard you posting back a post_back about ${ message.raw_message }`);
+        await bot.reply(message,`I heard you posting back a post_back about ${ message.value }`);
         await bot.reply(message, {
             text: 'Here is a menu!',
             quick_replies: main_menu
