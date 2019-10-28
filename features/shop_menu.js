@@ -1,8 +1,8 @@
 module.exports = function(controller) {
     let category_menu = [
         {
-            title: "My purchases",
-            payload: "my-purchases"
+            title: "Music",
+            payload: "music"
             
         },
         {
