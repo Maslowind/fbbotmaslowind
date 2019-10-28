@@ -8,6 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "bestbuy": "^2.1.3",
     "botbuilder-adapter-facebook": "^1.0.5",
     "botbuilder-storage-mongodb": "^0.9.5",
     "botkit": "^4.5.0",
