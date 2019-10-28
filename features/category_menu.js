@@ -8,11 +8,17 @@ module.exports = function(controller) {
     message.quick_reply.payload=='Bundle'||
     message.quick_reply.payload=='Game'
     )}, 'message', async(bot, message) => { 
-        bby.products(`type="${ message.quick_reply.payload }"`,{show:"image"}).then(function(data){});
+        /*bby.products(`type="${ message.quick_reply.payload }"`,{show:"image"}).then(function(data){});
+        for(let i=0;i<10;i++)
+        {
+        await bot.reply(message,` ${ data.products[i].image }`);
+        }*/
+        bby.products(`type="Movie"`,{show:"image"}).then(function(data){});
         for(let i=0;i<10;i++)
         {
         await bot.reply(message,` ${ data.products[i].image }`);
         }
+
  });
 
 }
