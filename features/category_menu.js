@@ -1,5 +1,5 @@
 module.exports = function(controller) {
-
+    let bby = require('bestbuy')('TGp7jkZIbKOzfRTDzkofjo2O');
     controller.hears(async(message) => { return (message.quick_reply.payload=='movie'||
     message.quick_reply.payload=='black-tie'||
     message.quick_reply.payload=='hard-good'||
@@ -8,7 +8,11 @@ module.exports = function(controller) {
     message.quick_reply.payload=='bundle'||
     message.quick_reply.payload=='game'
     )}, 'message', async(bot, message) => { 
-        await bot.reply(message,`I heard you wanna choose ${ message.quick_reply.payload }`);
+        bby.products(`type="${ message.quick_reply.payload }"`,{show:"image"}).then(function(data){});
+        for(let i=0;i<10;i++)
+        {
+        await bot.reply(message,` ${ data.products[i].image }`);
+        }
  });
 
 }
