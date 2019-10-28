@@ -26,6 +26,15 @@ module.exports = function(controller) {
             quick_replies: main_menu
         });
     });
+    controller.on('facebook_quick_reply', async(bot, message) => {
+        if (message.text == 'main-menu'|| message.quick_reply.payload=='main-menu') {
+            await bot.reply(message,`I heard you posting back a post_back about ${ message.text }`);
+        await bot.reply(message, {
+            text: 'Here is a menu!',
+            quick_replies: main_menu
+        });
+        }
+    });
     controller.on('facebook_postback', async(bot, message) => {
         if (message.text == 'main-menu'||message.text == '<postback_payload>'|| message.quick_reply.payload=='main-menu') {
             await bot.reply(message,`I heard you posting back a post_back about ${ message.text }`);
