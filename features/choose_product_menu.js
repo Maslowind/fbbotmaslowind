@@ -14,7 +14,7 @@ module.exports = function(controller) {
        /* bby.products(`type="${ message.quick_reply.payload }"`,{show:"image",pageSize:1}).then(function(data){
             await bot.reply(message,` ${data.products[0].image }`);
             });*/
-            await bot.reply(message,`I heard you posting back a post_back about ${ message.quick_reply.payload }`);
+            await bot.reply(message,`I heard you wanna known about ${ message.quick_reply.payload }`);
  });
 
 }
