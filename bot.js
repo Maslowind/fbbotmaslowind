@@ -24,10 +24,15 @@ if (process.env.MONGO_URI) {
     });
 }
 
+
 const adapter = new FacebookAdapter({
+
+    // REMOVE THIS OPTION AFTER YOU HAVE CONFIGURED YOUR APP!
+    //enable_incomplete: true,
+
     verify_token: process.env.FACEBOOK_VERIFY_TOKEN,
     access_token: process.env.FACEBOOK_ACCESS_TOKEN,
-    app_secret:process.env.FACEBOOK_APP_SECRET,
+    app_secret: process.env.FACEBOOK_APP_SECRET,
 })
 
 // emit events based on the type of facebook event being received
@@ -51,13 +56,12 @@ if (process.env.cms_uri) {
 
 // Once the bot has booted up its internal services, you can use them to do stuff.
 controller.ready(() => {
-    
+
     // load traditional developer-created local custom feature modules
     controller.loadModules(__dirname + '/features');
 
     /* catch-all that uses the CMS to trigger dialogs */
     if (controller.plugins.cms) {
-       
         controller.on('message,direct_message', async (bot, message) => {
             let results = false;
             results = await controller.plugins.cms.testTrigger(bot, message);
@@ -70,6 +74,8 @@ controller.ready(() => {
     }
 
 });
+
+
 
 controller.webserver.get('/', (req, res) => {
 
