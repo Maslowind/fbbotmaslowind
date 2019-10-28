@@ -26,7 +26,7 @@ module.exports = function(controller) {
             quick_replies: main_menu
         });
     });
-    controller.hears(async(message) => message.quick_reply.payload, 'message', async(bot, message) => {
+    controller.hears(async(message) => message.quick_reply, 'message', async(bot, message) => {
         if ( message.quick_reply.payload=='main-menu') {
             await bot.reply(message,`I heard you posting back a xyi about ${ message.text }`);
         await bot.reply(message, {
