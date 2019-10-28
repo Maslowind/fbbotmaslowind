@@ -36,12 +36,12 @@ module.exports = function(controller) {
             payload: "main-menu"
        }
     ];
-    /*controller.hears(async(message) => { return (message.quick_reply.payload=='shop') }, 'message', async(bot, message) => { 
+    controller.hears(async(message) => { return (message.quick_reply.payload=='shop') }, 'message', async(bot, message) => { 
         await bot.reply(message, {
-            text: 'Please, choose your category',
-            quick_replies: category_menu
-        });
-    });*/
+         text: 'Please, choose your category',
+         quick_replies: category_menu
+     });
+ });
     controller.on('facebook_postback', async(bot, message) => {
         if (message.text == 'shop') {
         await bot.reply(message, {
