@@ -43,9 +43,9 @@ module.exports = function(controller) {
      });
  });*/
  controller.on('message', async(bot, message) => {
-        
-    if (message.quick_reply.payload=='shop') {
         await bot.reply(message,`LOL2`);
+    if (message.quick_reply.payload=='shop') {
+        
     await bot.reply(message, {
         text: 'Please, choose your category:',
         quick_replies: category_menu
