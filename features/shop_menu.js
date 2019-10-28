@@ -7,24 +7,24 @@ module.exports = function(controller) {
         },
         {
             title: "Movie",
-            payload: "movie"
+            payload: "Movie"
         },
         {
             title: "Hard Good",
-            payload: "hard-good"
+            payload: "HardGood"
         },
         {
             title: "Black Tie",
-            payload: "black-tie"
+            payload: "BlackTie"
         }
         ,
         {
             title: "Game",
-            payload: "game"
+            payload: "Game"
         },
         {
             title: "Software",
-            payload: "software"
+            payload: "Software"
         }
         ,
         {
