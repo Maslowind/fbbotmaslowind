@@ -42,6 +42,16 @@ module.exports = function(controller) {
          quick_replies: category_menu
      });
  });*/
+ controller.on('message', async(bot, message) => {
+        
+    if (message.quick_reply.payload=='shop') {
+        await bot.reply(message,`LOL2`);
+    await bot.reply(message, {
+        text: 'Please, choose your category:',
+        quick_replies: category_menu
+    });
+    }
+});
     controller.on('facebook_postback', async(bot, message) => {
         
         if (message.text == 'shop') {
