@@ -82,6 +82,11 @@ controller.webserver.get('/', (req, res) => {
     res.send(`This app is running Botkit ${ controller.version }.`);
 
 });
+controller.webserver.get('/konf', (req, res) => {
+
+    res.send(`It's fine`);
+
+});
 
 
 
