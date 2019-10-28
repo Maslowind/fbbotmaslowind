@@ -38,7 +38,7 @@ module.exports = function(controller) {
     ];
     controller.hears(async(message) => { return (message.quick_reply.payload=='shop') }, 'message', async(bot, message) => { 
         await bot.reply(message, {
-         text: 'Please, choose your category',
+         text: 'Please, choose your category:',
          quick_replies: category_menu
      });
  });
