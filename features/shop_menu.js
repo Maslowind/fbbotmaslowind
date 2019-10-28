@@ -30,7 +30,11 @@ module.exports = function(controller) {
         {
             title: "Bundle",
             payload: "bundle"
-        }
+        },
+        {
+            title: "Go back",
+            payload: "main-menu"
+       }
     ];
     controller.hears('Shop','message',  async(bot, message) => { 
 

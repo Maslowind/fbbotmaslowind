@@ -3,9 +3,7 @@ module.exports = function(controller) {
         {
             title: "Go back",
             payload: "main-menu"
-            
-        }
-        
+       }
     ];
     controller.hears('To invite a friend','message',  async(bot, message) => { 
         await bot.reply(message,`Here is your link for friends: https://m.me/105232900896676?ref=some_random_string`);
@@ -14,11 +12,7 @@ module.exports = function(controller) {
             quick_replies: to_invite_a_friend_menu
         });
     });
-   /* controller.hears('Go back','message',  async(bot, message) => { 
 
-        await bot.reply(message,`Darov, lalka`);
-         await bot.reply(message,`message.quick_reply.payload: ${ message.quick_reply.payload }`);
-    });*/
     controller.on('facebook_referral', async(bot, message) => {
         await bot.reply(message,`sender.id: ${ message.sender.id }`);
         await bot.reply(message,`recipient.id: ${ message.recipient.id }`);
