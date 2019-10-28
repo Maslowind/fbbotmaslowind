@@ -19,16 +19,9 @@ module.exports = function(controller) {
         }
     ];
     
-    controller.hears('Main menu','facebook_quick_reply',  async(bot, message) => { 
-        await bot.reply(message,`I heard you posting back a post_back about ${ message.quick_reply.payload}`);
-        await bot.reply(message, {
-            text: 'Here is a menu!',
-            quick_replies: main_menu
-        });
-    });
+
     controller.hears(async(message) => { return (message.quick_reply.payload=='main-menu') }, 'message', async(bot, message) => { 
-        await bot.reply(message,`I heard you posting back a xyi about ${ message.text }`);
-        await bot.reply(message, {
+           await bot.reply(message, {
             text: 'Here is a menu!',
             quick_replies: main_menu
         });

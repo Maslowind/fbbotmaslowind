@@ -1,7 +1,7 @@
 module.exports = function(controller) {
     let to_invite_a_friend_menu = [
         {
-            title: "Main menu",
+            title: "Go back",
             payload: "main-menu"
             
         }
