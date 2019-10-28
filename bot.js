@@ -7,7 +7,7 @@
 // Import Botkit's core features
 const { Botkit } = require('botkit');
 const { BotkitCMSHelper } = require('botkit-plugin-cms');
-
+const quickReplyMiddleware = require('botkit-fb-quick-reply');
 // Import a platform-specific adapter for facebook.
 
 const { FacebookAdapter, FacebookEventTypeMiddleware } = require('botbuilder-adapter-facebook');
