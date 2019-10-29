@@ -1,6 +1,6 @@
 module.exports = function(controller) {
     
-    let to_invite_a_friend_menu = [
+    let go_back_menu = [
         {
             title: "Go back",
             payload: "main-menu"
@@ -10,7 +10,7 @@ module.exports = function(controller) {
         await bot.reply(message,`Here is your link for friends: https://m.me/105232900896676?ref=${ message.user }`);
         await bot.reply(message, {
             text: 'Send link to 3 friends and get one product is free!',
-            quick_replies: to_invite_a_friend_menu
+            quick_replies: go_back_menu
         });
 
     });
