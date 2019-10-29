@@ -13,11 +13,12 @@ module.exports = function(controller) {
         {
         await bot.reply(message,` ${ data.products[i].image }`);
         }*/
-        bby.products(`type="Movie"`,{show:"image"}).then(function(data){});
+       /* bby.products(`type="Movie"`,{show:"image"}).then(function(data){});
         for(let i=0;i<10;i++)
         {
         await bot.reply(message,` ${ data.products[i].image }`);
-        }
+        }*/
+        await bot.reply(message,` ${ message.quick_reply.payload }`);
 
  });
 
