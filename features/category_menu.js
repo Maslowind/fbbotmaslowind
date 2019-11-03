@@ -47,7 +47,7 @@ module.exports = function(controller) {
                                 {
                                 type:'postback',
                                 title:'Add to favorite',
-                                payload:`add-to-favorite ${data.products[i].sku`
+                                payload:`add-to-favorite ${data.products[i].sku}`
                             }
                             ]
                         },
