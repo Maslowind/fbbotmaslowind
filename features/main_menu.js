@@ -18,10 +18,11 @@ module.exports = function(controller) {
             payload: "to-invite-a-friend"
         }
     ];
+    let createNewUser = require('./Database/create_user');
     
-
     controller.hears(async(message) => { return (message.quick_reply.payload=='main-menu') }, 'message', async(bot, message) => { 
-           await bot.reply(message, {
+        createNewUser(message.user);   
+        await bot.reply(message, {
             text: 'Here is a menu!',
             quick_replies: main_menu
         });
@@ -31,6 +32,7 @@ module.exports = function(controller) {
 
     controller.on('facebook_postback', async(bot, message) => {
         if (message.text == 'main-menu'||message.text == '<postback_payload>') {
+            createNewUser(message.user); 
             await bot.reply(message, {
             text: 'Here is a menu!',
             quick_replies: main_menu

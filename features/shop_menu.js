@@ -2,7 +2,7 @@ module.exports = function(controller) {
     let category_menu = [
         {
             title: "Music",
-            payload: "music"
+            payload: "Music"
             
         },
         {

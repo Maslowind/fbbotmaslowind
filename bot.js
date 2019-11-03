@@ -22,6 +22,8 @@ let storage = null;
 if (process.env.MONGO_URI) {
     storage = mongoStorage = new MongoDbStorage({
         url : process.env.MONGO_URI,
+        database : "ShopDB",
+       // collection : "AllUsers"
     });
 }
 
@@ -54,10 +56,19 @@ if (process.env.cms_uri) {
         token: process.env.cms_token,
     }));
 }
-
+/*let state= Object.create(null);
+state.topic='ty pidor2';
+storage.write({'id':state});
+const items= storage.read(['name']);
+const state2 = items['name']||{};
+console.log(state2);*/
+//storage.write({'botState':'ty pidor'});
 // Once the bot has booted up its internal services, you can use them to do stuff.
 controller.ready(() => {
+    //controller.storage.User.save({id: message.user, foo:'bar'}, function(err) { console.log("WTF, dude"); });
 
+//console.log(controller.storage.MONGO_URI);
+//console.log(process.env.MONGO_URI);
     // load traditional developer-created local custom feature modules
     controller.loadModules(__dirname + '/features');
 
