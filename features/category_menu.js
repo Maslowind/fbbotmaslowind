@@ -7,24 +7,56 @@ module.exports = function(controller) {
        },
        {
             title: "Go back",
-            payload: "shop"
+            payload: "main-menu"
        }
     ];
     const bby = require('bestbuy')('TGp7jkZIbKOzfRTDzkofjo2O');
-    controller.hears(async(message) => { return (message.quick_reply.payload=='shop') }, 'message', async(bot, message) => { 
+    function SearchRequest(messagetext)
+    {
+        let messagerequestarr=[],finalString="";
+        let messagerequest=messagetext.substring(2);
+         messagerequest=messagerequest.replace(/\s+/g, ' ')
+        messagerequest=messagerequest.replace(/^\s+/g, '');
+        messagerequest=messagerequest.replace(/\s+$/g, '');
+        messagerequestarr=messagerequest.split(' '); 
+        for(let i=0; i< messagerequestarr.length;i++)
+        finalString+="search="+messagerequestarr[i]+"&";
+        return finalString.substring(0, finalString.length - 1);
+    };
+
+   /* controller.hears(async(message) => { return (message.quick_reply.payload=='shop') }, 'message', async(bot, message) => { 
+        await bot.reply(message, {
+         text: 'Please, text me name of product, which you want to buy in format: "S:..."',
+         quick_replies:  go_back_menu
+     });
+ });*/
+ controller.on('message', async(bot, message) => {     
+     console.log(message.text)  ;
+    if (message.quick_reply.payload=='shop') {        
+    await  bot.reply(message, {
+        text: 'Please, text me name of product, which you want to buy in format: "S:..."',
+        quick_replies: go_back_menu
+       })}
+    });
+
+           controller.on('facebook_postback', async(bot, message) => {        
+            if (message.text == 'shop') {        
+            await  bot.reply(message, {
+                text: 'Please, text me name of product, which you want to buy in format: "S:..."',
+                quick_replies: go_back_menu
+               })}
+            });
+            
+console.log(SearchRequest("S:    Harry   Potter      "));
+        controller.hears(async(message) => { return (message.text.substring(0,2) == 'S:') }, 'message', async(bot, message) => { 
+            await  bot.reply(message,  `${message.text.substring(2)}`)
+           
+        /*if(message.quick_reply.payload=='more-products')
+        counter++;*/
         
-        await  bot.reply(message, {
-            text: 'Please, text me name of product, which you want to buy in format: "Search:..."',
-            quick_replies: go_back_menu
-           })
-       /* });
-        controller.hears(async(message) => { return (message.quick_reply.payload=='shop') }, 'message', async(bot, message) => { */
-       
-        if(message.quick_reply.payload=='more-products')
-        counter++;
-        
-       await bby.products('search=spider&search=man',{show:"image,name,salePrice,sku", page:counter}).then(function(data){
-            for(let i=1; i<5;i++)
+       /* await bby.products(`${SearchRequest(message.text)}`,{show:"image,name,salePrice,sku",pageSize:5, page:1}).then(function(data){
+            console.log(data);
+            for(let i=0; i<data.products.length;i++)
             {
             var attachment = {
                 type:'template',
@@ -54,7 +86,7 @@ module.exports = function(controller) {
             bot.reply(message, {attachment: attachment,});
            
         }
-          });
+          });*/
         
 
  });
