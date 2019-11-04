@@ -15,9 +15,8 @@ module.exports = function createNewUser(id) {
           throw err;
         } else  if (fb === null) {
            newUser.save(function (err, fluffy) {
-            if (err) return console.error(err);
-            return console.error("Should I stay or should i go");
-          })
+            if (err) console.error(err);
+           })
         }
       });
    

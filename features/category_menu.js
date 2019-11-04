@@ -1,6 +1,5 @@
 module.exports = function(controller) {
     let counter =1;
-    let currentProdType='';
     let go_back_menu = [
         {
             title: "More products",

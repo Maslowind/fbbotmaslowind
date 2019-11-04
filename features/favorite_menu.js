@@ -4,7 +4,7 @@ module.exports = function(controller) {
     controller.on('facebook_postback', async(bot, message) => {
         if (message.text.substring(0,15) == 'add-to-favorite') {
            addToFavorite(message.user,message.text.substring(16));  
-            await bot.reply(message, `Buy postback: ${ message.text.substring(16) }`);
+            await bot.reply(message, `Added to favorite}`);
         }
     });
 }

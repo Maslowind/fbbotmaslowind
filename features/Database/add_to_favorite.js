@@ -12,13 +12,12 @@ module.exports = function addToFavorite(id, scu) {
     var favItem = {_id: scu};
 
     User.findOneAndUpdate({_id: id}, {$addToSet:{favorite:favItem }},(err, fb) => {
-       let oldUser=fb;
+       //let oldUser=fb;
         if (err){
              throw err;
            } else  if (fb != null) {
-              oldUser.update(function (err, fluffy) {
-               if (err) return console.error(err);
-               return console.error("Should I stay or should i go? "+ oldUser);
+            fb.update(function (err, fluffy) {
+               if (err) console.error(err);
              })
            }
          });
