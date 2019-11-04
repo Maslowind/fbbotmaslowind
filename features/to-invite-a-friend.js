@@ -24,7 +24,7 @@ module.exports = function(controller) {
         });
 
     });
-
+         
    controller.on('facebook_referral', async(bot, message) => {
         await bot.reply(message,`sender.id: ${ message.sender.id }`);
         await bot.reply(message,`recipient.id: ${ message.recipient.id }`);
@@ -33,8 +33,7 @@ module.exports = function(controller) {
         await bot.reply(message,`referral.ref: ${ message.referral.ref }`);
         await bot.reply(message,`referral.referer_uri: ${ message.referral.referer_uri }`);
         await bot.reply(message,`user.id: ${ message.user }`);
-
-
+      
      });
 
     

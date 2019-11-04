@@ -1,16 +1,5 @@
 module.exports = function(controller) {
-    let counter =1;
-    let go_back_menu = [
-        {
-            title: "More products",
-            payload: "more-products"
-       },
-       {
-            title: "Go back",
-            payload: "main-menu"
-       }
-    ];
-    const bby = require('bestbuy')('TGp7jkZIbKOzfRTDzkofjo2O');
+    const bby = require('bestbuy')('TGp7jkZIbKOzfRTDzkofjo2O'); 
     function SearchRequest(messagetext)
     {
         let messagerequestarr=[],finalString="";
@@ -23,21 +12,24 @@ module.exports = function(controller) {
         finalString+="search="+messagerequestarr[i]+"&";
         return finalString.substring(0, finalString.length - 1);
     };
+    let go_back_menu = [
+        {
+            title: "More products",
+            payload: "more-products"
+       },
+       {
+            title: "Go back",
+            payload: "main-menu"
+       }
+    ];
 
-   /* controller.hears(async(message) => { return (message.quick_reply.payload=='shop') }, 'message', async(bot, message) => { 
+ /*controller.hears(async(message) => {message.quick_reply.payload=='shop'}, 'message', async(bot, message) => { 
         await bot.reply(message, {
-         text: 'Please, text me name of product, which you want to buy in format: "S:..."',
-         quick_replies:  go_back_menu
+         text: 'Please, text me name of product, which you want to buy in format: "S: ..."',
+         quick_replies: go_back_menu
      });
  });*/
- controller.on('message', async(bot, message) => {     
-     console.log(message.text)  ;
-    if (message.quick_reply.payload=='shop') {        
-    await  bot.reply(message, {
-        text: 'Please, text me name of product, which you want to buy in format: "S:..."',
-        quick_replies: go_back_menu
-       })}
-    });
+
 
            controller.on('facebook_postback', async(bot, message) => {        
             if (message.text == 'shop') {        
@@ -47,14 +39,12 @@ module.exports = function(controller) {
                })}
             });
             
-console.log(SearchRequest("S:    Harry   Potter      "));
-        controller.hears(async(message) => { return (message.text.substring(0,2) == 'S:') }, 'message', async(bot, message) => { 
-            await  bot.reply(message,  `${message.text.substring(2)}`)
-           
-        /*if(message.quick_reply.payload=='more-products')
-        counter++;*/
-        
-       /* await bby.products(`${SearchRequest(message.text)}`,{show:"image,name,salePrice,sku",pageSize:5, page:1}).then(function(data){
+        //console.log(SearchRequest("S:    Harry   Potter      "));
+
+          controller.hears(async(message) => {return  message.text.substring(0,2) == 'S:'}, 'message', async(bot, message) => { 
+                await  bot.reply(message,  `${message.text.substring(2)}`) 
+
+        await bby.products(`${SearchRequest(message.text)}`,{show:"image,name,salePrice,sku",pageSize:5, page:1}).then(function(data){
             console.log(data);
             for(let i=0; i<data.products.length;i++)
             {
@@ -86,7 +76,7 @@ console.log(SearchRequest("S:    Harry   Potter      "));
             bot.reply(message, {attachment: attachment,});
            
         }
-          });*/
+          });
         
 
  });

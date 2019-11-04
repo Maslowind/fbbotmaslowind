@@ -20,13 +20,14 @@ module.exports = function(controller) {
     ];
     let createNewUser = require('./Database/create_user');
     
-    controller.hears(async(message) => { return (message.quick_reply.payload=='main-menu') }, 'message', async(bot, message) => { 
+   /* controller.hears(async(message) => {await message.quick_reply.payload=='main-menu'}, 
+         'message', async(bot, message) => { 
         createNewUser(message.user);   
         await bot.reply(message, {
             text: 'Here is a menu!',
             quick_replies: main_menu
         });
-    });
+    });*/
 
 
 

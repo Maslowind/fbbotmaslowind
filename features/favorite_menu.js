@@ -2,13 +2,21 @@ module.exports = function(controller) {
     let getFavoriteList = require('./Database/favorite/get_favorite_list');
     let favoriteList;
     let addToFavorite = require('./Database/favorite/add_to_favorite');
+    let delFavoriteItem = require('./Database/favorite/del_favorite');
     controller.on('facebook_postback', async(bot, message) => {
         if (message.text.substring(0,15) == 'add-to-favorite') {
            addToFavorite(message.user,message.text.substring(16));  
             await bot.reply(message, `Added to favorite`);
         }
     });
-    controller.hears(async(message) => { return (message.quick_reply.payload=='favorites') }, 'message', async(bot, message) => { 
+    controller.on('facebook_postback', async(bot, message) => {
+        if (message.text.substring(0,12) == 'del-from-fav') {
+            delFavoriteItem(message.user,message.text.substring(13));  
+            await bot.reply(message, `Added to favorite`);
+        }
+    });
+    //controller.hears(async(message) => { return (message.quick_reply.payload=='favorites') }, 'message', async(bot, message) => { 
+        controller.hears('Favorites','message',  async(bot, message) => { 
         await getFavoriteList(message.user).then(v => {
             favoriteList=v;
            });
