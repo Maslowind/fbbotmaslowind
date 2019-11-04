@@ -5,26 +5,24 @@ module.exports = function(controller) {
             title: "More products",
             payload: "more-products"
        },
-        {
+       {
             title: "Go back",
             payload: "shop"
        }
     ];
     const bby = require('bestbuy')('TGp7jkZIbKOzfRTDzkofjo2O');
-    controller.hears(async(message) => { return (message.quick_reply.payload=='Movie'||
-    message.quick_reply.payload=='BlackTie'||
-    message.quick_reply.payload=='HardGood'||
-    message.quick_reply.payload=='Music'||
-    message.quick_reply.payload=='Software'||
-    message.quick_reply.payload=='Bundle'||
-    message.quick_reply.payload=='Game'||
-    message.quick_reply.payload=='more-products'
-    )}, 'message', async(bot, message) => { 
+    controller.hears(async(message) => { return (message.quick_reply.payload=='shop') }, 'message', async(bot, message) => { 
+        
+        await  bot.reply(message, {
+            text: 'Please, text me name of product, which you want to buy in format: "Search:..."',
+            quick_replies: go_back_menu
+           })
+       /* });
+        controller.hears(async(message) => { return (message.quick_reply.payload=='shop') }, 'message', async(bot, message) => { */
+       
         if(message.quick_reply.payload=='more-products')
         counter++;
-        else
-        currentProdType=message.quick_reply.payload;
-
+        
        await bby.products('search=spider&search=man',{show:"image,name,salePrice,sku", page:counter}).then(function(data){
             for(let i=1; i<5;i++)
             {
@@ -57,10 +55,7 @@ module.exports = function(controller) {
            
         }
           });
-         await  bot.reply(message, {
-         text: 'Your menu:',
-         quick_replies: go_back_menu
-        })
+        
 
  });
 

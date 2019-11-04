@@ -1,5 +1,5 @@
 module.exports = function(controller) {
-    let category_menu = [
+    /*let category_menu = [
         {
             title: "Music",
             payload: "Music"
@@ -51,7 +51,7 @@ module.exports = function(controller) {
             quick_replies: category_menu
         });
         }
-    });
+    });*/
     
 
 }
