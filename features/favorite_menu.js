@@ -20,6 +20,8 @@ module.exports = function(controller) {
         await getFavoriteList(message.user).then(v => {
             favoriteList=v;
            });
+           if (favoriteList==null)  await bot.reply(message, `Your favorite list is empty.`);
+           else{
      for(let i=0; i<favoriteList.length;i++)
          {
            await  bby.products(`sku=${favoriteList[i]}`,{show:"image,name,salePrice,sku",pageSize:1, page:1}).then(function(data){
@@ -51,5 +53,6 @@ module.exports = function(controller) {
          bot.reply(message, {attachment: attachment,});
         });
      }
+    }
     });
 }
