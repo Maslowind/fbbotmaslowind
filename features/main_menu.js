@@ -1,25 +1,9 @@
 module.exports = function(controller) {
-    let main_menu = [
-        {
-            title: "My purchases",
-            payload: "my-purchases"
-            
-        },
-        {
-            title: "Shop",
-            payload: "shop"
-        },
-        {
-            title: "Favorites",
-            payload: "favorites"
-        },
-        {
-            title: "To invite a friend",
-            payload: "to-invite-a-friend"
-        }
-    ];
+
     let createNewUser = require('./Database/create_user');
-    
+    let menu= require('./menus/menus');
+
+
    /* controller.hears(async(message) => {await message.quick_reply.payload=='main-menu'}, 
          'message', async(bot, message) => { 
         createNewUser(message.user);   
@@ -32,11 +16,12 @@ module.exports = function(controller) {
 
 
     controller.on('facebook_postback', async(bot, message) => {
+        console.log(menu.main_menu)
         if (message.text == 'main-menu'||message.text == '<postback_payload>') {
             createNewUser(message.user); 
             await bot.reply(message, {
             text: 'Here is a menu!',
-            quick_replies: main_menu
+            quick_replies:menu.main_menu
         });
         }
     });

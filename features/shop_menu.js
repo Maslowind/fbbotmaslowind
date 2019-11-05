@@ -1,4 +1,5 @@
 module.exports = function(controller) {
+    let menu= require('./menus/menus');
     const bby = require('bestbuy')('TGp7jkZIbKOzfRTDzkofjo2O'); 
     function SearchRequest(messagetext)
     {
@@ -12,17 +13,7 @@ module.exports = function(controller) {
         finalString+="search="+messagerequestarr[i]+"&";
         return finalString.substring(0, finalString.length - 1);
     };
-    let go_back_menu = [
-        {
-            title: "More products",
-            payload: "more-products"
-       },
-       {
-            title: "Go back",
-            payload: "main-menu"
-       }
-    ];
-
+    
  /*controller.hears(async(message) => {message.quick_reply.payload=='shop'}, 'message', async(bot, message) => { 
         await bot.reply(message, {
          text: 'Please, text me name of product, which you want to buy in format: "S: ..."',
@@ -35,7 +26,7 @@ module.exports = function(controller) {
             if (message.text == 'shop') {        
             await  bot.reply(message, {
                 text: 'Please, text me name of product, which you want to buy in format: "S:..."',
-                quick_replies: go_back_menu
+                quick_replies: menu.go_back_main_menu
                })}
             });
             
@@ -44,7 +35,7 @@ module.exports = function(controller) {
           controller.hears(async(message) => {return  message.text.substring(0,2) == 'S:'}, 'message', async(bot, message) => { 
                 await  bot.reply(message,  `${message.text.substring(2)}`) 
 
-        await bby.products(`${SearchRequest(message.text)}`,{show:"image,name,salePrice,sku",pageSize:5, page:1}).then(function(data){
+        await bby.products(`${SearchRequest(message.text)}`,{show:"image,name,salePrice,sku",pageSize:5, page:1}).then(async function(data){
             console.log(data);
             for(let i=0; i<data.products.length;i++)
             {
@@ -73,8 +64,11 @@ module.exports = function(controller) {
                     ]
                 }
             };
-            bot.reply(message, {attachment: attachment,});
-           
+            await bot.reply(message, {attachment: attachment,});
+            await bot.reply(message, 
+                {text: 'Please, text me name of product, which you want to buy in format: "S:...". Or you can go back into main menu:',
+                            quick_replies: menu.go_back_main_menu
+                });
         }
           });
         

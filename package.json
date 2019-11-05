@@ -15,5 +15,10 @@
     "botkit-plugin-cms": "^1.0.2",
     "dotenv": "^7.0.0",
     "mongoose": "^5.7.7"
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2"
   }
 }
