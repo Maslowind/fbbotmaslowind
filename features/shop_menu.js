@@ -14,12 +14,12 @@ module.exports = function(controller) {
         return finalString.substring(0, finalString.length - 1);
     };
     
- /*controller.hears(async(message) => {message.quick_reply.payload=='shop'}, 'message', async(bot, message) => { 
+ controller.hears(async(message) => {return await message.quick_reply.payload=='shop'}, 'message', async(bot, message) => { 
         await bot.reply(message, {
          text: 'Please, text me name of product, which you want to buy in format: "S: ..."',
-         quick_replies: go_back_menu
+         quick_replies:  menu.go_back_main_menu
      });
- });*/
+ });
 
 
            controller.on('facebook_postback', async(bot, message) => {        
@@ -30,11 +30,8 @@ module.exports = function(controller) {
                })}
             });
             
-        //console.log(SearchRequest("S:    Harry   Potter      "));
-
-          controller.hears(async(message) => {return  message.text.substring(0,2) == 'S:'}, 'message', async(bot, message) => { 
-                await  bot.reply(message,  `${message.text.substring(2)}`) 
-
+       controller.hears(async(message) => {return  message.text.substring(0,2) == 'S:'}, 'message', async(bot, message) => { 
+               
         await bby.products(`${SearchRequest(message.text)}`,{show:"image,name,salePrice,sku",pageSize:5, page:1}).then(async function(data){
             console.log(data);
             for(let i=0; i<data.products.length;i++)

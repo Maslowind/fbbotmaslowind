@@ -10,16 +10,23 @@ module.exports = function(controller) {
         if (message.text.substring(0,15) == 'add-to-favorite') {
            addToFavorite(message.user,message.text.substring(16));  
             await bot.reply(message, `Added to favorite`);
+            await bot.reply(message, 
+                {text: 'You can go back into main menu:',
+                            quick_replies: menu.go_back_main_menu
+                });
         }
     });
     controller.on('facebook_postback', async(bot, message) => {
         if (message.text.substring(0,12) == 'del-from-fav') {
             delFavoriteItem(message.user,message.text.substring(13));  
             await bot.reply(message, `Deleted from favorite`);
+            await bot.reply(message, 
+                {text: 'You can go back into main menu:',
+                            quick_replies: menu.go_back_main_menu
+                });
         }
     });
-    //controller.hears(async(message) => { return (message.quick_reply.payload=='favorites') }, 'message', async(bot, message) => { 
-        controller.hears('Favorites','message',  async(bot, message) => { 
+    controller.hears('Favorites','message',  async(bot, message) => { 
         await getFavoriteList(message.user).then(v => {
             favoriteList=v;
            });

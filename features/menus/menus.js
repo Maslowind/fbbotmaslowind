@@ -20,8 +20,28 @@
     ];
     let go_back_main_menu = [
         {
-            title: "Go back",
+            title: "Go back to main menu",
             payload: "main-menu"
+       }
+    ];
+    let yes_no_pn = [
+        {
+            title: "Yes, use this number",
+            payload: "yes-pn"
+       },
+       {
+        title: "No, use another number",
+        payload: "no-pn"
+       }
+    ];
+    let yes_no_adress = [
+        {
+            title: "Yes",
+            payload: "yes-adress"
+       },
+       {
+        title: "No",
+        payload: "no-adress"
        }
     ];
    
