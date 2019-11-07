@@ -1,4 +1,4 @@
-module.exports = function addPhoneNumber(id, number) {
+module.exports = function addAdress(id,adress) {
     const mongoose = require('mongoose');
     const MongoURI = process.env.MONGO_URI;
     const user_struct = require('../user_struct.js');
@@ -8,7 +8,7 @@ module.exports = function addPhoneNumber(id, number) {
       if (err){
            throw err;
          } else   {
-           fb.phoneNumber=number;
+           fb.adress=adress;
             fb.save(function (err, fluffy) {
              if (err) return console.error(err);
             })

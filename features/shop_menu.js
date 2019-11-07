@@ -14,7 +14,7 @@ module.exports = function(controller) {
         return finalString.substring(0, finalString.length - 1);
     };
     
- controller.hears(async(message) => {return await message.quick_reply.payload=='shop'}, 'message', async(bot, message) => { 
+    controller.hears('Shop','message',  async(bot, message) => { 
         await bot.reply(message, {
          text: 'Please, text me name of product, which you want to buy in format: "S: ..."',
          quick_replies:  menu.go_back_main_menu

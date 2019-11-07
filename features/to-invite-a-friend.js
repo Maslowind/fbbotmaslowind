@@ -1,6 +1,8 @@
 module.exports = function(controller) {
-    const bby = require('bestbuy')('TGp7jkZIbKOzfRTDzkofjo2O');
     let menu= require('./menus/menus');
+    let getBasketList = require('./Database/basket/get_basket');
+   
+
     controller.hears('To invite a friend','message',  async(bot, message) => { 
         await bot.reply(message,`Here is your link for friends: https://m.me/105232900896676?ref=${ message.user }`);
         await bot.reply(message, {
@@ -18,6 +20,7 @@ module.exports = function(controller) {
         await bot.reply(message,`referral.ref: ${ message.referral.ref }`);
         await bot.reply(message,`referral.referer_uri: ${ message.referral.referer_uri }`);
         await bot.reply(message,`user.id: ${ message.user }`);
+
      });
 
     

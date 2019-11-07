@@ -26,23 +26,23 @@
     ];
     let yes_no_pn = [
         {
-            title: "Yes, use this number",
+            title: "Yes, this number",
             payload: "yes-pn"
        },
        {
-        title: "No, use another number",
+        title: "No, another number",
         payload: "no-pn"
        }
     ];
     let yes_no_adress = [
         {
-            title: "Yes",
+            title: "Yes, this adress",
             payload: "yes-adress"
        },
        {
-        title: "No",
+        title: "No, another adress",
         payload: "no-adress"
        }
     ];
    
-    module.exports = {main_menu, go_back_main_menu };
+    module.exports = {main_menu, go_back_main_menu,yes_no_pn,yes_no_adress  };
