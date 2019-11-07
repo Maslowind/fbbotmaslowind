@@ -26,7 +26,13 @@ module.exports = function(controller) {
         await getBasketList(message.user).then(v => {
             basketList=v;
            });
-           if ( basketList==null)  await bot.reply(message, `Your basket list is empty.`);
+           if ( Object.size(basketList)==0)
+           {await bot.reply(message, `Your basket list is empty.`)
+           await bot.reply(message, 
+            {text: 'You can go back into main menu:',
+                        quick_replies: menu.go_back_main_menu
+            });
+        }
            else{
 
      for(let i=0; i<Object.size(basketList);i++)
@@ -43,7 +49,7 @@ module.exports = function(controller) {
                      {
                          title:` ${data.products[0].name }`,
                          image_url:` ${data.products[0].image }`,
-                         subtitle:` ${data.products[0].salePrice }$, ${basketList[i].date }$`,
+                         subtitle:` ${data.products[0].salePrice }$, ${basketList[i].date }`,
                          buttons:[
                              {
                              type:'postback',

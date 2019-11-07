@@ -29,8 +29,15 @@ module.exports = function(controller) {
     controller.hears('Favorites','message',  async(bot, message) => { 
         await getFavoriteList(message.user).then(v => {
             favoriteList=v;
+            console.log(favoriteList);
            });
-           if (favoriteList==null)  await bot.reply(message, `Your favorite list is empty.`);
+           if (favoriteList.length==0)  
+           {await bot.reply(message, `Your favorite list is empty.`);
+           await bot.reply(message, 
+            {text: 'You can go back into main menu:',
+                        quick_replies: menu.go_back_main_menu
+            });
+        }
            else{
      for(let i=0; i<favoriteList.length;i++)
          {
