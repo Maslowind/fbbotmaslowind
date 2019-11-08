@@ -7,8 +7,7 @@ module.exports = function(controller) {
     let menu= require('./menus/menus');
     function checkInvantion(id)
     {
-        addInvated(id);
-       if(getInvated(id)==false)
+      if(getInvated(id)==false)
       {
           if(getInvantion(id)==true){ addInvated(id); bot.reply(message,  'Congradulations! You get an opportunity get one our product is free!')}
       }
