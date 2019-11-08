@@ -50,13 +50,11 @@ module.exports = function(controller) {
      });
  });
      controller.hears('Yes, this adress','message',  async(bot, message) => { 
-        await getAdress(message.user).then(v => {
-            adress=v;
-           });
-        if(adress==null) await bot.reply(message, `Please, text me your adress in format: "AD:..."`);
-        else await bot.reply(message, {text: `Do you wanna use this one adress: ${ adress }?`,
-                        quick_replies: menu.yes_no_adress  
-            });
+        await bot.reply(message, "Thanks a lot! we will call you");
+        await bot.reply(message, {
+            text: 'Here is a menu!',
+            quick_replies:menu.main_menu
+        });
    });
    controller.hears(async(message) => { return message.text.substring(0,3) == 'AD:'}, 'message', async(bot, message) => { 
     addAdress(message.user,message.text.substring(3)) ;
