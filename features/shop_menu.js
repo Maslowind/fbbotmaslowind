@@ -1,6 +1,6 @@
 module.exports = function(controller) {
     let menu= require('./menus/menus');
-    const bby = require('bestbuy')('TGp7jkZIbKOzfRTDzkofjo2O'); 
+    const bby = require('bestbuy')(process.env.BBY); 
     function SearchRequest(messagetext)
     {
         let messagerequestarr=[],finalString="";

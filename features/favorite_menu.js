@@ -4,7 +4,7 @@ module.exports = function(controller) {
     let favoriteList;
     let addToFavorite = require('./Database/favorite/add_to_favorite');
     let delFavoriteItem = require('./Database/favorite/del_favorite');
-    const bby = require('bestbuy')('TGp7jkZIbKOzfRTDzkofjo2O'); 
+    const bby = require('bestbuy')(process.env.BBY); 
 
     controller.on('facebook_postback', async(bot, message) => {
         if (message.text.substring(0,15) == 'add-to-favorite') {

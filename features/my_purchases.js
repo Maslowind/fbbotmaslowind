@@ -3,7 +3,7 @@ module.exports = function(controller) {
     let getFavoriteList = require('./Database/favorite/get_favorite_list');
     let  basketList;
     let getBasketList = require('./Database/basket/get_basket');
-   const bby = require('bestbuy')('TGp7jkZIbKOzfRTDzkofjo2O'); 
+    const bby = require('bestbuy')(process.env.BBY); 
    Object.size = function(obj) {
     var size = 0, key;
     for (key in obj) {
