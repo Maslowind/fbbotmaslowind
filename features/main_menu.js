@@ -5,8 +5,6 @@ module.exports = function(controller) {
     let getInvated = require('./Database/invitations/get_invated');
     let getInvantion = require('./Database/invitations/get_invation_list');
     let menu= require('./menus/menus');
-    let addInvated = require('./Database/invitations/add_invated');
-    let invented;
     function checkInvantion(id)
     {
         addInvated(id);
