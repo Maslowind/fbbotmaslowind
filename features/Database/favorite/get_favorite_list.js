@@ -8,7 +8,7 @@ module.exports = async function getFavoriteList(id) {
     await User.findOne({_id: id}, (err, fb) => {
      if (err){
           throw err;
-        } else  if (fb===null) return favorite_list
+        } else  if (fb===null)  favorite_list=null;
         else
          {
            for(let i=0; i<fb.favorite.length;i++)

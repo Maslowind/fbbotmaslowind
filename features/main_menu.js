@@ -5,19 +5,25 @@ module.exports = function(controller) {
     let getInvated = require('./Database/invitations/get_invated');
     let getInvantion = require('./Database/invitations/get_invation_list');
     let menu= require('./menus/menus');
-    function checkInvantion(id)
+    let invanted="", invation="";
+    async function checkInvantion(id)
     {
-      if(getInvated(id)==false)
+        await getInvated(id).then(v => {
+           invanted=v;
+           }); 
+           await getInvantion(id).then(h => {
+            invation=h;
+            });
+      if(invanted==false)
       {
-          addInvated(id);
-          if(getInvantion(id)==true){  bot.reply(message,  'Congradulations! You get an opportunity get one our product is free!')}
+          if(invation==true){addInvated(id); }
       }
     };
 
     controller.hears('Go back to main menu','message',  async(bot, message) => { 
         createNewUser(message.user);   
        await checkInvantion(message.user)
-        await bot.reply(message, {
+       await bot.reply(message, {
             text: 'Here is a menu!',
             quick_replies: menu.main_menu
         });

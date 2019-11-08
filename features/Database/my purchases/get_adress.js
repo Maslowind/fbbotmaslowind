@@ -9,7 +9,7 @@ module.exports = async function getAdress(id) {
      if (err){
           throw err;
         } 
-        else  if (fb.adress==null) return null;
+        else  if (fb.adress==null) result= null;
         else result= fb.adress;
        });
     return result;  

@@ -12,7 +12,7 @@ module.exports = async function getBasketList(id) {
     await User.findOne({_id: id}, (err, fb) => {
      if (err){
           throw err;
-        } else  if (fb===null) return null
+        } else  if (fb===null) return basket_list=null;
         else
          {
            for(let i=0; i<fb.basket.length;i++)
