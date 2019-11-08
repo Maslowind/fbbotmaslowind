@@ -14,7 +14,7 @@ module.exports = function(controller) {
        if(getInvated(id)==false)
       {
           console.log(2)
-          if(getInvantion(id)==true){await  bot.reply(message,  'Congradulations! You get an opportunity get one our product is free!')}
+          if(getInvantion(id)==true){  bot.reply(message,  'Congradulations! You get an opportunity get one our product is free!')}
       }
     };
 
