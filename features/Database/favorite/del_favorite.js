@@ -10,6 +10,7 @@ module.exports = async function gelFavoriteItem(id, itemId) {
             if (err){
                  throw err;
                }
+               
                else if(fb!=null)
                 {
                   fb.favorite.remove(itemId);
