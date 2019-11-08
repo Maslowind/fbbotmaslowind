@@ -5,16 +5,14 @@ module.exports = function(controller) {
     let getInvated = require('./Database/invitations/get_invated');
     let getInvantion = require('./Database/invitations/get_invation_list');
     let menu= require('./menus/menus');
-    let addToInvitations = require('./Database/invitations/add_to_invitations');
+    let addInvated = require('./Database/invitations/add_invated');
     let invented;
     function checkInvantion(id)
     {
         addInvated(id);
-        //console.log(1)
        if(getInvated(id)==false)
       {
-          console.log(2)
-          if(getInvantion(id)==true){  bot.reply(message,  'Congradulations! You get an opportunity get one our product is free!')}
+          if(getInvantion(id)==true){ addInvated(id); bot.reply(message,  'Congradulations! You get an opportunity get one our product is free!')}
       }
     };
 
