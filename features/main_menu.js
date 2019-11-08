@@ -9,7 +9,8 @@ module.exports = function(controller) {
     {
       if(getInvated(id)==false)
       {
-          if(getInvantion(id)==true){ addInvated(id); bot.reply(message,  'Congradulations! You get an opportunity get one our product is free!')}
+          addInvated(id);
+          if(getInvantion(id)==true){  bot.reply(message,  'Congradulations! You get an opportunity get one our product is free!')}
       }
     };
 
