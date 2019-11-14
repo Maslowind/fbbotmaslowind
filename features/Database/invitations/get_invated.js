@@ -11,7 +11,6 @@ module.exports = async function getInvated(id) {
         } 
         else
          {
-           console.log(fb);
            if(fb.invited==null) result= false;
            else result= true
         }

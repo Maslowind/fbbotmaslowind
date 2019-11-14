@@ -2,7 +2,7 @@ module.exports = function addToBasket(id, scu) {
   function GetDate()
   {
       var today = new Date();
-       return today.getDate()+'.'+(today.getMonth()+1)+'.'+today.getFullYear();
+       return (today.getMonth()+1)+'.'+today.getDate()+'.'+today.getFullYear();
   };
     const mongoose = require('mongoose');
     const MongoURI = process.env.MONGO_URI;
