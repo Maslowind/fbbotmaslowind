@@ -32,7 +32,7 @@ module.exports = function(controller) {
         controller.on('facebook_postback', async(bot, message) => {
         if (message.text == 'main-menu'||message.text == '<postback_payload>') {
             createNewUser(message.user); 
-           checkInvantion(message.user)
+          // checkInvantion(message.user)
             await bot.reply(message, {
             text: 'Here is a menu!',
             quick_replies:menu.main_menu
