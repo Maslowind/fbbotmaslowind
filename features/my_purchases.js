@@ -27,7 +27,7 @@ module.exports = function(controller) {
             basketList=v;
            });
            if ( Object.size(basketList)==0)
-           {await bot.reply(message, `Your basket list is empty.`)
+           {await bot.reply(message, `Your basket list is empty. `)
            await bot.reply(message, 
             {text: 'You can go back into main menu:',
                         quick_replies: menu.go_back_main_menu
