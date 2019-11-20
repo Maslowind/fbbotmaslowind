@@ -22,7 +22,7 @@ module.exports = function(controller) {
 
     controller.hears('Go back to main menu','message',  async(bot, message) => { 
         createNewUser(message.user);   
-       await checkInvantion(message.user)
+       //await checkInvantion(message.user)
        await bot.reply(message, {
             text: 'Here is a menu!',
             quick_replies: menu.main_menu
